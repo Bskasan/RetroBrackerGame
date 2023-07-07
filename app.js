@@ -2,6 +2,7 @@ const grid = document.querySelector(".grid");
 const scoreDisplay = document.querySelector("#score");
 const startButton = document.querySelector(".btn");
 const refreshButton = document.querySelector(".rbtn");
+
 refreshButton.addEventListener("click", reloadPage);
 function reloadPage() {
   window.location.reload();
