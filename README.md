@@ -2,7 +2,7 @@
 
 ### Technologies:
 
--- HTML
--- CSS
--- VanillaJS
+- HTML
+- CSS
+- VanillaJS
 
