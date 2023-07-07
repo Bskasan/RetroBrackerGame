@@ -1,12 +1,13 @@
+// -------------- SELECTORS --------------- //
+
 const grid = document.querySelector(".grid");
 const scoreDisplay = document.querySelector("#score");
 const startButton = document.querySelector(".btn");
 const refreshButton = document.querySelector(".rbtn");
 
-refreshButton.addEventListener("click", reloadPage);
-function reloadPage() {
-  window.location.reload();
-}
+
+// -------------- VARIABLES --------------- //
+
 const blockWidth = 100;
 const blockHeight = 20;
 const boardWidth = 560;
@@ -22,9 +23,17 @@ let yDirection = 2;
 let score = 0;
 let gameStarted = false;
 
+// -------------- REFRESH BUTTON --------------- //
+
+refreshButton.addEventListener("click", reloadPage);
+function reloadPage() {
+  window.location.reload();
+}
+
+
 startButton.addEventListener("click", startGame);
 
-//create block
+// -------------- CREATING BLOCKS AND ALL BLOCKS --------------- //
 class Block {
   constructor(xAxis, yAxis) {
     this.bottomLeft = [xAxis, yAxis];
@@ -33,7 +42,7 @@ class Block {
     this.topRight = [xAxis + blockWidth, yAxis + blockHeight];
   }
 }
-// all my blocks
+
 const blocks = [
   new Block(10, 270),
   new Block(120, 270),
@@ -52,7 +61,7 @@ const blocks = [
   new Block(450, 210),
 ];
 
-// draw my block
+// -------------- DRAWING BLOCKS --------------- //
 
 function addBlocks() {
   for (let i = 0; i < blocks.length; i++) {
@@ -66,27 +75,27 @@ function addBlocks() {
 
 addBlocks();
 
-//add user
+// -------------- ADDING PLAYER --------------- //
 
-const user = document.createElement("div");
-user.classList.add("user");
-drawUser();
-grid.appendChild(user);
+const player = document.createElement("div");
+player.classList.add("player");
+drawPlayer();
+grid.appendChild(player);
 
-//draw user
+// -------------- DRAWING PLAYER --------------- //
 
-function drawUser() {
-  user.style.left = currentPosition[0] + "px";
-  user.style.bottom = currentPosition[1] + "px";
+function drawPlayer() {
+  player.style.left = currentPosition[0] + "px";
+  player.style.bottom = currentPosition[1] + "px";
 }
 
-//draw the ball
+// -------------- DRAWING BALL --------------- //
 function drawBall() {
   ball.style.left = ballCurrentPosition[0] + "px";
   ball.style.bottom = ballCurrentPosition[1] + "px";
 }
 
-// add ball
+// -------------- ADDING BALL --------------- //
 const ball = document.createElement("div");
 ball.classList.add("ball");
 drawBall();
@@ -96,7 +105,7 @@ function startGame() {
   if (!gameStarted) {
     timerId = setInterval(moveBall, 15);
     startButton.removeEventListener("click", startGame);
-    // drawUser();
+
     if (document.getElementsByClassName("ball").length === 0) {
       drawBall();
       checkForCollisions();
@@ -108,21 +117,21 @@ function startGame() {
     }
   }
 
-  //move user
+// -------------- PLAYER MOVEMENT --------------- //
 
   function moveUser(e) {
     switch (e.key) {
       case "ArrowLeft":
         if (currentPosition[0] > 0) {
           currentPosition[0] -= 10;
-          drawUser();
+          drawPlayer();
         }
         break;
 
       case "ArrowRight":
         if (currentPosition[0] < boardWidth - blockWidth) {
           currentPosition[0] += 10;
-          drawUser();
+          drawPlayer();
         }
         break;
     }
@@ -130,7 +139,7 @@ function startGame() {
 
   document.addEventListener("keydown", moveUser);
 
-  //move the ball
+// -------------- BALL MOVEMENT --------------- //
   function moveBall() {
     ballCurrentPosition[0] += xDirection;
     ballCurrentPosition[1] += yDirection;
@@ -138,7 +147,7 @@ function startGame() {
     checkForCollisions();
   }
 
-  // check for collisions
+  // -------------- CHECK FOR COLLISION --------------- //
   function checkForCollisions() {
     //check for block collisions
     for (let i = 0; i < blocks.length; i++) {
@@ -211,3 +220,5 @@ function startGame() {
     }
   }
 }
+
+

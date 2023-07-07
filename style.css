@@ -33,7 +33,7 @@ body {
   height: 20px;
 }
 
-.user {
+.player {
   background-image: url(./images/stone.png);
   background-size: 100px 20px;
   position: absolute;
