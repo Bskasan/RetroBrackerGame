@@ -8,15 +8,15 @@ body {
   background: rgb(63, 94, 251);
   background: radial-gradient(
     circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(252, 70, 201, 1) 100%
+    rgb(220, 135, 65) 0%,
+    rgb(88, 71, 136) 100%
   );
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .grid {
-  background-color: yellow;
+  background-color: rgba(136, 136, 235, 0.418);
   display: block;
   position: absolute;
   width: 560px;
@@ -53,6 +53,7 @@ body {
 .score {
   font-family: "Ysabeau SC", sans-serif;
   margin: 50px;
+  text-align: center;
   font-size: 40px;
   font-weight: bold;
   color: black;

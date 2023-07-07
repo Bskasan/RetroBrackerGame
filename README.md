@@ -4,5 +4,11 @@
 
 - HTML
 - CSS
+- JavaScript
 - VanillaJS
+
+### Another Tools:
+
+- Git / GitHub
+- VsCode
 
